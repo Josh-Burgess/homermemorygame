@@ -41,6 +41,16 @@ const cardChoices = () => ({
       name: "Spider",
       id: 7,
       indicator: "1"
+    },
+    {
+      name: "Josh",
+      id: 8,
+      indicator: "0"
+    },
+    {
+      name: "Molly",
+      id: 9,
+      indicator: "0"
     }
   ]
 });
