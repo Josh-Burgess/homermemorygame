@@ -69,6 +69,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  cursor: pointer;
 
   flex: 1 1 auto;
   padding: 0.5rem;
@@ -97,6 +98,7 @@ body {
 .flip-container {
   perspective: 1000px;
   padding: 0.8rem;
+  cursor: pointer;
 }
 .flip-container.flipped .flipper {
   transform: rotateY(180deg);
