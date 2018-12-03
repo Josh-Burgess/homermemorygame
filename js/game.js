@@ -99,9 +99,12 @@ function shuffleCards(cards) {
 }
 
 function startGame(gamesize) {
+  let is_flipping = false;
+
   function flipCard(e) {
-    // Kill execution if the card is already revealed
-    if (e.currentTarget.classList.contains("flipped")) return false;
+    // Kill execution if the card is already revealed or we're waiting for an unmatched flip
+    if (e.currentTarget.classList.contains("flipped") || is_flipping)
+      return false;
 
     const id = e.currentTarget.getAttribute("data-card-id");
 
@@ -119,13 +122,14 @@ function startGame(gamesize) {
           victory.classList.add("shown");
         }
       } else {
-        setTimeout(
-          () =>
-            document
-              .querySelectorAll(".flipped:not(.matched)")
-              .forEach(flipped => flipped.classList.remove("flipped")),
-          1000
-        );
+        is_flipping = true;
+        setTimeout(() => {
+          is_flipping = false;
+
+          document
+            .querySelectorAll(".flipped:not(.matched)")
+            .forEach(flipped => flipped.classList.remove("flipped"));
+        }, 1000);
       }
       localCards.flipped = [];
     }
